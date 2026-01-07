@@ -1,11 +1,15 @@
-const express = require('express');
-const cors = require('cors');
+import express from 'express';
+import cors from 'cors';
+import productRoutes from './modules/product/product.routes.js';
 
 const app = express();
 
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// Routes
+app.use('/api/products', productRoutes);
 
 // Health Check Route
 app.get('/api/health', (req, res) => {
@@ -21,4 +25,4 @@ app.get('/', (req, res) => {
   res.send('ShopSmart Backend Service');
 });
 
-module.exports = app;
+export default app;
