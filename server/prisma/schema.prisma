@@ -11,3 +11,14 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+model Product {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  price       Int
+  category    String
+  notionLink  String
+  isFree      Boolean  @default(false)
+  createdAt   DateTime @default(now())
+}
