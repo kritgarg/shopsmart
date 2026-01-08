@@ -8,7 +8,8 @@ export const fetchProducts = async (req, res) => {
     const products = await getAllProducts();
     res.json(products);
   } catch (error) {
-    res.status(500).json({ error: "Failed to fetch products" });
+    console.error("fetchProducts error:", error);
+    res.status(500).json({ error: "Failed to fetch products", details: error?.message });
   }
 };
 
@@ -20,6 +21,7 @@ export const fetchProduct = async (req, res) => {
     }
     res.json(product);
   } catch (error) {
-    res.status(500).json({ error: "Failed to fetch product" });
+    console.error("fetchProduct error:", error);
+    res.status(500).json({ error: "Failed to fetch product", details: error?.message });
   }
 };
