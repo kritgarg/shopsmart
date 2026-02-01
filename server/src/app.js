@@ -1,6 +1,8 @@
+import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 import productRoutes from './modules/product/product.routes.js';
+import purchaseRoutes from './modules/purchase/purchase.routes.js';
 
 const app = express();
 
@@ -10,6 +12,7 @@ app.use(express.json());
 
 // Routes
 app.use('/api/products', productRoutes);
+app.use('/api/purchases', purchaseRoutes);
 
 // Health Check Route
 app.get('/api/health', (req, res) => {
