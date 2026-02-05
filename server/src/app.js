@@ -16,11 +16,7 @@ app.use('/api/purchases', purchaseRoutes);
 
 // Health Check Route
 app.get('/api/health', (req, res) => {
-  res.json({
-    status: 'ok',
-    message: 'ShopSmart Backend is running',
-    timestamp: new Date().toISOString()
-  });
+  res.status(200).json({ status: 'ok' });
 });
 
 // Root Route (optional, just to show something)
