@@ -7,4 +7,10 @@ describe('GET /api/health', () => {
         expect(res.statusCode).toEqual(200);
         expect(res.body).toHaveProperty('status', 'ok');
     });
+
+    afterAll(async () => {
+        const { default: prisma, pool } = await import("../src/config/db.js");
+        await prisma.$disconnect();
+        await pool.end();
+    });
 });

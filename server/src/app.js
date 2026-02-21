@@ -12,7 +12,7 @@ app.use(express.json());
 
 // Routes
 app.use('/api/products', productRoutes);
-app.use('/api/purchases', purchaseRoutes);
+app.use('/api/purchase', purchaseRoutes);
 
 // Health Check Route
 app.get('/api/health', (req, res) => {
