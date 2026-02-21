@@ -18,19 +18,17 @@ model User {
   email     String   @unique
   name      String?
   createdAt DateTime @default(now())
-
-  purchases Purchase[]
 }
 
 model Product {
-  id          String   @id @default(uuid())
+  id          String     @id @default(uuid())
   title       String
   description String
   price       Int
   category    String
   notionLink  String
-  isFree      Boolean  @default(false)
-  createdAt   DateTime @default(now())
+  isFree      Boolean    @default(false)
+  createdAt   DateTime   @default(now())
 
   purchases   Purchase[]
 
@@ -39,12 +37,11 @@ model Product {
 
 model Purchase {
   id        String   @id @default(uuid())
-  userId    String
+  userId    String   // Clerk userId — stored as plain string (no FK to User table)
   productId String
-  paymentId String?   // null for now (before Razorpay)
+  paymentId String?
   createdAt DateTime @default(now())
 
-  user      User     @relation(fields: [userId], references: [id])
   product   Product  @relation(fields: [productId], references: [id])
 
   @@index([userId])
