@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { PrismaClient } from "../generated/prisma/client.ts";
+import { PrismaClient } from "../generated/prisma/index.js";
 import pg from 'pg';
 import { PrismaPg } from '@prisma/adapter-pg';
 
@@ -13,4 +13,5 @@ const adapter = new PrismaPg(pool);
 
 const prisma = new PrismaClient({ adapter });
 
+export { pool };
 export default prisma;
