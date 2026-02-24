@@ -6,4 +6,10 @@ describe('Product Service (Unit)', () => {
     expect(products).toBeDefined();
     expect(Array.isArray(products)).toBe(true);
   });
+
+  afterAll(async () => {
+    const { default: prisma, pool } = await import("../src/config/db.js");
+    await prisma.$disconnect();
+    await pool.end();
+  });
 });

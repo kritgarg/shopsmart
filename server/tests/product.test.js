@@ -12,4 +12,10 @@ describe('Product API', () => {
     const res = await request(app).get('/api/products/invalid-id-that-does-not-exist');
     expect(res.statusCode).toBe(404);
   });
+
+  afterAll(async () => {
+    const { default: prisma, pool } = await import("../src/config/db.js");
+    await prisma.$disconnect();
+    await pool.end();
+  });
 });
