@@ -7,12 +7,4 @@ const router = express.Router();
 router.post("/", requireAuth, createPurchase);
 router.get("/my", requireAuth, getMyPurchases);
 
-// Temp test route to verify auth is working
-router.get("/protected", requireAuth, (req, res) => {
-  res.json({
-    message: "You are authenticated ✅",
-    user: req.user,
-  });
-});
-
 export default router;
