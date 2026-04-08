@@ -19,8 +19,7 @@ function App() {
                 {data ? (
                     <div>
                         <p>Status: <span className="status-ok">{data.status}</span></p>
-                        <p>Message: {data.message}</p>
-                        <p>Timestamp: {data.timestamp}</p>
+
                     </div>
                 ) : (
                     <p>Loading backend status...</p>
