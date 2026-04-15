@@ -33,21 +33,22 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: cd server && npm install
+        run: cd backend && npm install
 
       - name: Generate Prisma Client
-        run: cd server && npx prisma generate
+        run: cd backend && npx prisma generate
 
       - name: Run Lint
-        run: cd server && npm run lint
+        run: cd backend && npm run lint
 
       - name: Push Database Schema
         env:
           DATABASE_URL: postgresql://test_user:test_password@localhost:5432/test_db
-        run: cd server && npx prisma db push
+        run: cd backend && npx prisma db push
 
       - name: Run Tests
         env:
           DATABASE_URL: postgresql://test_user:test_password@localhost:5432/test_db
           CLERK_SECRET_KEY: test_secret_key_mock_123
-        run: cd server && npm test
+          NODE_ENV: test
+        run: cd backend && npm test
