@@ -1,4 +1,4 @@
-import { createClerkClient } from '@clerk/backend';
+import { createClerkClient, verifyToken } from '@clerk/backend';
 import { env } from '../config/env.js';
 import * as userService from '../modules/user/user.service.js';
 
@@ -17,7 +17,9 @@ export const requireAuth = async (req, res, next) => {
     if (process.env.NODE_ENV === 'test' && req.headers['x-test-user-id']) {
         clerkUserId = req.headers['x-test-user-id'];
     } else {
-        const decoded = await clerk.verifyToken(token);
+        const decoded = await verifyToken(token, {
+            secretKey: env.CLERK_SECRET_KEY,
+        });
         clerkUserId = decoded.sub;
     }
 

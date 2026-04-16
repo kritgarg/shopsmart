@@ -4,6 +4,7 @@ import cors from 'cors';
 import productRoutes from './modules/product/product.routes.js';
 import cartRoutes from './modules/cart/cart.routes.js';
 import purchaseRoutes from './modules/purchase/purchase.routes.js';
+import userRoutes from './modules/user/user.routes.js';
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use('/api/products', productRoutes);
 app.use('/api/cart', cartRoutes);
 app.use('/api/purchase', purchaseRoutes);
+app.use('/api/users', userRoutes);
 
 // Health Check Route
 app.get('/api/health', (req, res) => {
